@@ -25,7 +25,16 @@ export default class extends Controller {
      });
 
      this.originCube = this.creatCube(0, 0, 0);
+     this.offsetCube = this.creatCube(2,2,-2)
      this.scene.add(this.originCube);
+     this.scene.add(this.offsetCube);
+
+     const backgroundTexture = new THREE.TextureLoader().load(
+      "/assets/webb_space_pic2.png"
+     );
+     this.scene.background = backgroundTexture;
+
+
      this.camera.position.z = 5;
      this.animate();
     }
@@ -35,6 +44,9 @@ export default class extends Controller {
 
       this.originCube.rotation.x += 0.01;
       this.originCube.rotation.y += 0.01;
+
+      this.offsetCube.rotation.x -= 0.005;
+      this.offsetCube.rotation.y -= 0.005;
 
       this.renderer.render(this.scene, this.camera);
     }
