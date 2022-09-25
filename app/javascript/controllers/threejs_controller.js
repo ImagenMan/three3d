@@ -19,15 +19,20 @@ export default class extends Controller {
     document.body.appendChild(this.renderer.domElement)
 
     this.geometry = new THREE.BoxGeometry();
-    this.material = new THREE.MeshBasicMaterial({ 
+    this.material = new THREE.MeshStandardMaterial({ 
       color: 0x00ff00, 
-      wireframe: true,
+      wireframe: false,
      });
 
      this.originCube = this.creatCube(0, 0, 0);
-     this.offsetCube = this.creatCube(2,2,-2)
+     this.offsetCube = this.creatCube(2,2,-2);
+
+     this.pointLight = new THREE.PointLight(0xffffff);
+     this.pointLight.position.set(3, 3, -5);
+
      this.scene.add(this.originCube);
      this.scene.add(this.offsetCube);
+     this.scene.add(this.pointLight);
 
      const backgroundTexture = new THREE.TextureLoader().load(
       "/assets/webb_space_pic2.png"
