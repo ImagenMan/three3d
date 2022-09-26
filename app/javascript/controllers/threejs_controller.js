@@ -25,10 +25,13 @@ export default class extends Controller {
      });
 
      this.originCube = this.creatCube(0, 0, 0);
-     this.offsetCube = this.creatCube(2,2,-2);
+     this.offsetCube = this.creatCube(2,2,-4);
 
      this.pointLight = new THREE.PointLight(0xffffff);
      this.pointLight.position.set(3, 3, -5);
+
+     this.lightHelper = new THREE.PointLightHelper(this.pointLight);
+     this.scene.add(this.lightHelper);
 
      this.scene.add(this.originCube);
      this.scene.add(this.offsetCube);
